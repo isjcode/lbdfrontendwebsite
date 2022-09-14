@@ -17,12 +17,14 @@ function LoginModal({closeLoginModal}) {
             }
         });
     }
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const errorElement = document.getElementsByClassName("errorOutput")[0];
         const genericErrorMessage = "Something went wrong.";
         errorElement.textContent = "";
+        console.log(inputs.password)
 
         const data = {
             EmailOrUsername: inputs.emailorusername,
@@ -39,6 +41,7 @@ function LoginModal({closeLoginModal}) {
         .then((response) => {
             if (!response.ok) {
                 errorElement.textContent = genericErrorMessage;
+                console.log(response.err)
             }
             else {
                 closeLoginModal(false);
@@ -72,7 +75,7 @@ function LoginModal({closeLoginModal}) {
                 </div>
                 <div className="modalTextInput password">
                     <label htmlFor="password"> Password </label>
-                    <input name="password" value={inputs.password || ""} onChange={handleChange} type="password" id="username" required/> 
+                    <input name="password" value={inputs.password || ""} onChange={handleChange} type="password" id="username" required minLength={6} /> 
                 </div>
                 <div className="errorOutput">
                 </div> 

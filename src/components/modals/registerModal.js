@@ -27,6 +27,13 @@ function RegisterModal({closeRegisterModal}) {
             errorElement.appendChild(p);
             return;
         }
+
+        if (inputs.password.length < 6) {
+            const p = document.createElement("p");
+            p.textContent = "Password must be at least 6 characters.";
+            errorElement.appendChild(p);
+            return;
+        }
         const data = {
             Email: inputs.email,
             Username: inputs.username,
@@ -51,7 +58,7 @@ function RegisterModal({closeRegisterModal}) {
             }
         })
         .catch((error) => {
-            errorElement.textContent = genericErrorMessage;
+            errorElement.textContent = error;
             console.error('Error:', error);
         });
 
