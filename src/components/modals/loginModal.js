@@ -17,6 +17,8 @@ function LoginModal({closeLoginModal}) {
             }
         });
     }
+
+    console.log("lol");
     
 
     const handleSubmit = (e) => {
